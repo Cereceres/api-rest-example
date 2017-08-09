@@ -2,33 +2,56 @@
   "name": "pointtersapiv1",
   "version": "1.0.0",
   "description": "The pointters REST API",
+  "nyc": {
+    "check-coverage": true,
+    "per-file": true,
+    "lines": 99,
+    "statements": 99,
+    "functions": 99,
+    "branches": 99,
+    "reporter": [
+      "html",
+      "text"
+    ],
+    "extension": [
+      ".js"
+    ],
+    "cache": true,
+    "all": true
+  },
   "main": "server/app.js",
   "dependencies": {
     "bcrypt": "^1.0.2",
-    "body-parser": "*",
-    "composable-middleware": "^0.3.0",
-    "compression": "^1.7.0",
-    "cookie-parser": "^1.4.3",
-    "express": "*",
-    "express-flash": "0.0.2",
-    "express-jwt": "^5.3.0",
-    "flash": "^1.1.0",
+    "debug": "^2.6.8",
+    "fb": "^2.0.0",
+    "ioredis": "^3.1.2",
     "joi": "^10.6.0",
     "jsonwebtoken": "^7.4.1",
-    "jwt-simple": "*",
-    "method-override": "^2.3.9",
+    "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-compose": "^4.0.0",
+    "koa-cookie": "^1.0.0",
+    "koa-jwt": "^3.2.2",
+    "koa-logger": "^3.0.1",
+    "koa-router": "^7.2.1",
+    "koa-session": "^5.4.0",
+    "koa-socket.io": "^1.1.2",
+    "koa-unless": "^1.0.7",
+    "koa2-validation": "0.0.2",
     "mongoose": "*",
-    "morgan": "*",
     "node-pre-gyp": "^0.6.36",
-    "passport": "*",
-    "passport-jwt": "*"
+    "request": "^2.81.0"
   },
   "scripts": {
-    "test": "nyc mocha test/bootstrap $(find test -name *.test.js )"
+    "start": "pm2 start server/index.js --name",
+    "test": "nyc mocha test/bootstrap $(find test -name *.test.js ) && nyc report",
+    "mocha": "mocha test/bootstrap $(find test -name *.test.js )"
   },
   "author": "pointters",
   "license": "ISC",
   "devDependencies": {
+    "co-mocha": "^1.2.0",
+    "faker": "^4.1.0",
     "nock": "^9.0.14",
     "proxyquire": "^1.8.0",
     "supertest": "^3.0.0"

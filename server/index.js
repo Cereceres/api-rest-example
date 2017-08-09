@@ -1,18 +1,10 @@
-const express = require('express');
-const flash = require('express-flash');
-
-const config = require('../config');
-
-const app = express();
-
-
-app.use(flash());
-require('./lib/app')(app);
+const app = require('./lib/app');
+const { port } = require('../config');
+const attachSocket = require('../lib/socket');
 require('./lib/routes')(app);
 
-const server = require('http').createServer(app);
-server.listen(config.port, () => {
-    console.info('Express server listening on %d', config.port);
-});
+const server = require('http').createServer(app.callback());
+attachSocket(server);
+server.listen(port, () => console.info(`Express server listening on %d${port}`));
 
 module.exports = server;

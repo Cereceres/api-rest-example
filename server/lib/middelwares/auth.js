@@ -1,27 +1,19 @@
-const config = require('../../../config'); // get db config file
-const expressJwt = require('express-jwt');
-const {finddOne} = require('../../../stores/user');
-const compose = require('composable-middleware');
-const validateJwt = expressJwt({secret: config.secret});
+const unless = require('koa-unless');
 
-exports.isAuthenticated = () => compose()
-    .use((req, res, next) => {
-        // allow access_token to be passed through query parameter as well
-        if (req.query && req.query.hasOwnProperty('access_token'))
-            req.headers.authorization = `Bearer ${ req.query.access_token}`;
+const { findOne } = require('../../../stores/user');
 
-        try {
-            validateJwt(req, res, next);
-        } catch (err) {
-            next(err);
-        }
-    })
-    .use((req, res, next) => {
-        finddOne({_id: req.user._id})
-        .then((user) => {
-            if (!user) return res.status(400).send('Unauthorized');
-            req.user = user;
-            next();
-        })
-        .catch(next);
-    });
+const middelware = async (ctx, next) => {
+    console.log('In auth = ', ctx.state.user, ctx.session);
+    const userUsingJwt = await findOne(ctx.queryToFindUserById);
+
+    const userUsingSession = await findOne({ _id: ctx.session.id });
+
+    const isAuth = userUsingJwt && userUsingSession;
+    if (!isAuth) return ctx.throw(403, 'Unauthorized User');
+
+    if (next) await next();
+};
+
+middelware.unless = unless;
+
+module.exports = middelware;
