@@ -1,4 +1,10 @@
 module.exports = {
+    completedRegistration: Boolean,
+    completedRegistrationDate: Date,
+    isActive: {
+        type: Boolean,
+        default: true
+    },
     awards: {
         type: String
     },
@@ -48,34 +54,38 @@ module.exports = {
         generalNotifications: {
             type: String,
             description: 'generalNotifications',
-            enum: [ 'pushNotification', 'email', '' ]
+            enum: ['pushNotification', 'email', '']
         },
         orderNotifications: {
             type: String,
             description: 'orderNotifications',
-            enum: [ 'pushNotification', 'email', '' ]
+            enum: ['pushNotification', 'email', '']
         },
         offerNotifications: {
             type: String,
             description: 'offerNotifications',
-            enum: [ 'pushNotification', 'email', '' ]
+            enum: ['pushNotification', 'email', '']
         },
         summaryEmail: {
             type: String,
             description: 'summaryEmail',
-            enum: [ 'daily', 'weekly' ]
+            enum: ['daily', 'weekly']
         }
     },
     likes: {
-        type: [ String ],
+        type: [String],
         default: []
     },
     following: {
-        type: [ String ],
+        type: [String],
         default: []
     },
     watching: {
-        type: [ String ],
+        type: [String],
+        default: []
+    },
+    likesPost: {
+        type: [String],
         default: []
     },
     phoneNumber: {

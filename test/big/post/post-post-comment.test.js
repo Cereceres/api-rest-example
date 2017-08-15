@@ -1,7 +1,7 @@
 const assert = require('assert');
 
 const { create: createService } = require('../../../stores/service');
-const { create: createReview } = require('../../../stores/service-review');
+const { findOne: findOneUser, update: updateUser } = require('../../../stores/user');
 
 
 describe('User services', () => {
@@ -24,24 +24,20 @@ describe('User services', () => {
                 },
             };
             const serviceCreated = await createService(service);
-            const review = {
-                userId: __user._id,
-                serviceId: serviceCreated._id,
-                comment: 'comments to test review',
-                qualityOfService: 4,
-                overallRating: 80,
-                willingToBuyServiceAgain: false
-            };
-            const reviewCreated = await createReview(review);
-            console.log('reviewCreated =', reviewCreated);
+            await updateUser({
+                email: __user.email
+            },
+            {
+                watching: []
+            });
             const { body: res } = await agent
-                .get(`/service/${reviewCreated._id}/review`)
-                .send(review)
+                .post(`/service/${serviceCreated._id}/watch`)
                 .set(authorizationHeader)
                 .set(Cookie)
                 .expect(200);
-            assert(res.success);
-            assert(res.review);
+            assert.deepEqual(res, { success: true });
+            const user = await findOneUser({ _id: __user._id });
+            assert.deepEqual(user.watching, [ serviceCreated._id ]);
         });
     });
 

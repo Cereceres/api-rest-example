@@ -1,10 +1,9 @@
 const { review: { minLengthForComment } } = require('../../config');
-
-
 module.exports = {
     userId: {
         type: String,
-        requied: true
+        requied: true,
+        ref: 'user'
     },
     comment: {
         type: String,
@@ -13,9 +12,13 @@ module.exports = {
     createdAt: {
         type: Date
     },
+    isActive: {
+        type: Boolean,
+        default: true
+    },
     qualityOfService: {
         type: Number,
-        enum: [0, 1, 2, 3, 4, 5]
+        enum: [ 0, 1, 2, 3, 4, 5 ]
     },
     overallRating: {
         type: Number,
@@ -25,7 +28,8 @@ module.exports = {
     },
     serviceId: {
         type: String,
-        required: true
+        required: true,
+        ref: 'service'
     },
     willingToBuyServiceAgain: Boolean
 };

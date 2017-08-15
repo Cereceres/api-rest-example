@@ -5,13 +5,12 @@ const messageAuthenticationFailed = 'Authentication failed. Wrong password.';
 const getHeaders = require('../../../lib/get-headers');
 const getSession = require('../../../lib/get-session');
 
-module.exports = async(user, password, ctx) => {
-    if (!user || user.error) {
-        ctx.body = { success: false, msg: messageUserNotFound };
-        return;
-    }
+module.exports = async (user, password, ctx) => {
+    console.log('user, password =========', user, password);
+    if (!user || user.error) ctx.throw(404, messageUserNotFound);
     const isMatch = await comparePassword(password, user.password);
-    if (!isMatch) ctx.throw(401, messageAuthenticationFailed);
+    console.log('isMatch =============', isMatch);
+    if (!isMatch || isMatch.error) ctx.throw(401, messageAuthenticationFailed);
     const token = signToken({ id: user._id });
     ctx.status = 200;
     ctx.response.set(getHeaders());
