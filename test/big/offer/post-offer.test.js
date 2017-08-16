@@ -22,12 +22,8 @@ describe('User requests', () => {
                 .set(authorizationHeader)
                 .set(Cookie)
                 .expect(200);
-<<<<<<< HEAD
             assert(res.success);
             assert(res.offer._id);
-=======
-            assert.deepEqual(res, { success: true });
->>>>>>> the test to /offer endpoint is added
             const offer = await findOneOffer(body);
             assert(offer.isActive === true);
         });
