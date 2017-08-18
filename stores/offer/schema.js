@@ -35,10 +35,6 @@ module.exports = {
     },
     workDurationUom: {
         type: String,
-<<<<<<< HEAD
         enum: [ 'hour', 'day', 'week' ]
-=======
-        enum: ['hour', 'day', 'week']
->>>>>>> router to offer is added
     },
 };
