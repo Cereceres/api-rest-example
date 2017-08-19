@@ -5,7 +5,7 @@ const { create: createService } = require('../../../stores/post');
 
 describe('User posts', () => {
     describe('SUCCESS', () => {
-        it('/post/comment POST sohuld create a post given', async() => {
+        it('/post/comment POST sohuld create a post given', async () => {
             const post = {
                 userId: 'id of user',
                 category: {

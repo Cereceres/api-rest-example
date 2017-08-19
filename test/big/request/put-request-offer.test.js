@@ -6,39 +6,39 @@ const { create: createRequest } = require('../../../stores/request');
 
 describe('User requests', () => {
     describe('SUCCESS', () => {
-        it('/request/:idRequest/offer PUT sohuld create a request given', async() => {
+        it('/request/:idRequest/offer PUT sohuld create a request given', async () => {
             const body = {
                 userId: __user._id,
-                category:{
+                category: {
                     type: 'Object'
                 },
-                location:{
+                location: {
                     type: 'Object'
                 },
-                media:{
+                media: {
                     type: 'Object'
                 },
-                minPrice:1,
-                maxPrice:1,
-                scheduleDate:1
+                minPrice: 1,
+                maxPrice: 1,
+                scheduleDate: 1
             };
             const requestCreated = await createRequest(body);
             console.log('requestCreated ', requestCreated);
             const offer = {
                 requestId: requestCreated._id,
-                fulfillmentMethod:{},
-                location:{},
-                media:{},
-                price:{},
-                workDuration:{},
-                workDurationUom:'hour',
+                fulfillmentMethod: {},
+                location: {},
+                media: {},
+                price: {},
+                workDuration: {},
+                workDurationUom: 'hour',
                 userId: __user._id
             };
             const offerCreated = await createOffer(offer);
             console.log('offerCreated ', offerCreated);
             const update = {
                 price: {
-                    amount:0
+                    amount: 0
                 }
             };
             await agent.put(`/request/${offerCreated._id}/offer`)
