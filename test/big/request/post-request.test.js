@@ -2,7 +2,7 @@ const assert = require('assert');
 
 describe('User requests', () => {
     describe('SUCCESS', () => {
-        it('/request POST sohuld create a request given', async() => {
+        it('/request POST sohuld create a request given', async () => {
             const body = {
                 category: {
                     type: 'Object'
