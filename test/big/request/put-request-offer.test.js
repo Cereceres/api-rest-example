@@ -6,7 +6,7 @@ const { create: createRequest } = require('../../../stores/request');
 
 describe('User requests', () => {
     describe('SUCCESS', () => {
-        it('/request/:idRequest/offer PUT sohuld create a request given', async() => {
+        it('/request/:idRequest/offer PUT sohuld create a request given', async () => {
             const body = {
                 userId: __user._id,
                 category: {
