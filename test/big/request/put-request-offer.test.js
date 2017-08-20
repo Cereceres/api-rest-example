@@ -6,17 +6,17 @@ const { create: createRequest } = require('../../../stores/request');
 
 describe('User requests', () => {
     describe('SUCCESS', () => {
-        it('/request/:idRequest/offer/:idOffer PUT sohuld create a request given', async() => {
+        it('/request/:idRequest/offer PUT sohuld create a request given', async() => {
             const body = {
                 userId: __user._id,
                 category:{
-                    type: Object
+                    type: 'Object'
                 },
                 location:{
-                    type: Object
+                    type: 'Object'
                 },
                 media:{
-                    type: Object
+                    type: 'Object'
                 },
                 minPrice:1,
                 maxPrice:1,
@@ -26,34 +26,29 @@ describe('User requests', () => {
             console.log('requestCreated ', requestCreated);
             const offer = {
                 requestId: requestCreated._id,
-                category:{
-                    type: Object
-                },
-                location:{
-                    type: Object
-                },
-                media:{
-                    type: Object
-                },
-                minPrice:0,
-                maxPrice:1,
-                scheduleDate:1,
+                fulfillmentMethod:{},
+                location:{},
+                media:{},
+                price:{},
+                workDuration:{},
+                workDurationUom:'hour',
                 userId: __user._id
             };
             const offerCreated = await createOffer(offer);
             console.log('offerCreated ', offerCreated);
             const update = {
-                offer: 'offer 2'
+                price: {
+                    amount:0
+                }
             };
-            const { body: res } = await agent.put(`/request/${offerCreated._id}/offer`)
+            await agent.put(`/request/${offerCreated._id}/offer`)
                 .send(update)
                 .set(authorizationHeader)
                 .set(Cookie)
                 .expect(200);
-            console.log('res = ', res);
             const updated = await findOneOffer({ _id: offerCreated._id });
             console.log('update ', updated);
-            assert.equal(updated.offer, update.offer);
+            assert.deepEqual(updated.price, update.price);
         });
     });
 
