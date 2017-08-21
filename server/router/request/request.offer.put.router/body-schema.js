@@ -1,12 +1,12 @@
 const joi = require('joi');
 
+const workDurationUom = [ 'hour', 'day', 'week' ];
 
 module.exports = joi.object().keys({
-    category:joi.object(),
-    location:joi.object(),
-    media:joi.object(),
-    minPrice:joi.number().min(0),
-    maxPrice:joi.number(),
-    serviceId:joi.string(),
-    scheduleDate:joi.number(),
+    fulfillmentMethod: joi.object(),
+    location: joi.object(),
+    media: joi.object(),
+    price: joi.object(),
+    workDuration: joi.object(),
+    workDurationUom: joi.string().valid(workDurationUom)
 });
