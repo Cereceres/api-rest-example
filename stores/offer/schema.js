@@ -5,37 +5,37 @@ module.exports = {
         index: true,
         ref: 'user'
     },
-    createdAt:{
+    createdAt: {
         type: Date
     },
-    fulfillmentMethod:{
-        type:Object
+    fulfillmentMethod: {
+        type: Object
     },
-    location:{
-        type:Object
+    location: {
+        type: Object
     },
-    media:{
-        type:Object
+    media: {
+        type: Object
     },
-    price:{
-        type:Object
+    price: {
+        type: Object
     },
-    requestId:{
-        type:String,
-        required: true
-    },
-    serviceId:{
-        type:String,
-        required: true
-    },
-    updatedAt:{
-        type:Date
-    },
-    workDuration:{
-        type:Object
-    },
-    workDurationUom:{
+    serviceId: {
         type: String,
-        enum: [ 'hour', 'day', 'week' ]
+        required: true
+    },
+    isActive: {
+        type: Boolean,
+        default: true
+    },
+    updatedAt: {
+        type: Date
+    },
+    workDuration: {
+        type: Object
+    },
+    workDurationUom: {
+        type: String,
+        enum: ['hour', 'day', 'week']
     },
 };

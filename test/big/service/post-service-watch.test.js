@@ -1,7 +1,8 @@
 const assert = require('assert');
 
 const { create: createService } = require('../../../stores/service');
-const { findOne: findOneUser, update: updateUser } = require('../../../stores/user');
+const { update: updateUser } = require('../../../stores/user');
+const { get: getWatching } = require('../../../stores/user/watching');
 
 
 describe('User services', () => {
@@ -36,8 +37,8 @@ describe('User services', () => {
                 .set(Cookie)
                 .expect(200);
             assert.deepEqual(res, { success: true });
-            const user = await findOneUser({ _id: __user._id });
-            assert.deepEqual(user.watching, [ serviceCreated._id ]);
+            const watching = await getWatching({ _id: __user._id });
+            assert.deepEqual(watching, [ serviceCreated._id ]);
         });
     });
 

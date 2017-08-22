@@ -5,31 +5,32 @@ module.exports = {
         index: true,
         ref: 'user'
     },
-    category:{
+    category: {
         type: Object
     },
-    createdAt:{
-        type: String
+    createdAt: {
+        type: Date
     },
-    location:{
+    isActive: {
+        type: Boolean,
+        default: true
+    },
+    location: {
         type: Object
     },
-    media:{
+    media: {
         type: Object
     },
-    minPrice:{
+    minPrice: {
         type: Number
     },
-    maxPrice:{
+    maxPrice: {
         type: Number
     },
-    requestId:{
+    scheduleDate: {
         type: Number
     },
-    scheduleDate:{
-        type: Number
-    },
-    updatedAt:{
-        type: String
+    updatedAt: {
+        type: Date
     }
 };
