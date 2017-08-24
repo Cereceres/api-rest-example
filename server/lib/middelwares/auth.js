@@ -13,6 +13,7 @@ const middelware = async (ctx, next) => {
 
     if (userUsingJwt && userUsingSession) isAuth = isAuth &&
         userUsingJwt._id === userUsingSession._id;
+
     if (!isAuth) return ctx.throw(403, 'Unauthorized User');
 
     if (next) await next();
