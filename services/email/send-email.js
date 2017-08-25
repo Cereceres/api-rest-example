@@ -6,6 +6,7 @@ const {emailSenderingCong:{emailRemitentInOpt}} = require('../../config');
 const helper = SendGrid.mail;
 
 const sendEmail = async(emailReceiver, subject, _content) => {
+    console.log('emailReceiver, subject, _content', emailReceiver, subject, _content);
     const fromEmail = new helper.Email(emailRemitentInOpt);
     const toEmail = new helper.Email(emailReceiver);
     const content = new helper.Content('text/plain', _content);

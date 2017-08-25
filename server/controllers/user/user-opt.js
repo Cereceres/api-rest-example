@@ -12,7 +12,7 @@ const { optExpiresIn,
 const errorInUpdateUser = 'Error on update user';
 const errorInSendEmailMessage = 'Error on send email';
 
-module.exports = async(ctx) => {
+module.exports = async (ctx) => {
     const queryToFindUser = { email: ctx.request.body.email };
     const user = await findOne(queryToFindUser);
 
