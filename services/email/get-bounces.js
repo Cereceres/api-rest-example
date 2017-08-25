@@ -1,4 +1,6 @@
-module.exports = async (sg) => {
+const sg = require('./client');
+
+module.exports = async () => {
     const requestToGetBounces = sg.emptyRequest({
         method: 'GET',
         path: '/v3/suppression/bounces',
