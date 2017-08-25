@@ -1,4 +1,6 @@
-module.exports = async (sg, bouncesToDelete) => {
+const sg = require('./client');
+
+module.exports = async (bouncesToDelete) => {
     const requestToDeleteBounces = sg.emptyRequest({
         method: 'DELETE',
         path: '/v3/suppression/bounces',
