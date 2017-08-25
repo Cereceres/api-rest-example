@@ -1,4 +1,4 @@
-const {update: updateUser} = require('../../../stores/user');
+const {update: updateUser} = require('../../stores/user');
 
 
 const bounced = true;

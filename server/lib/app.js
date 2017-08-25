@@ -33,13 +33,16 @@ app.use(session({
 app.use(jwt.unless({
     path: pathProtected
 }));
+app.use(getQueries.unless({
+    path: pathProtected
+}));
 app.use(auth.unless({
     path: pathProtected
 }));
+
 app.use(bodyParser({
     formLimit: '5mb',
     jsonLimit: '5mb',
     textLimit: '5mb'
 }));
-app.use(getQueries());
 module.exports = app;
