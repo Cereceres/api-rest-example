@@ -26,5 +26,8 @@ module.exports = {
         subjectOptEmail: 'Password Reset',
         contentOptEmail: 'Your password was resetted'
 
+    },
+    schedule:{
+        BounceEmail:'00 00 * * * *'
     }
 };

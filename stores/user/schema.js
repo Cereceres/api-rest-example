@@ -7,6 +7,17 @@ module.exports = {
         type: Boolean,
         default: true
     },
+    isEmail:{
+        valid: {
+            type:Boolean,
+            default:true
+        },
+        bounced: {
+            type:Boolean,
+            default:false
+        },
+        reason: String
+    },
     awards: {
         type: String
     },
