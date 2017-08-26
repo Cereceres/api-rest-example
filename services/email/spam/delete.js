@@ -1,15 +1,15 @@
-const sg = require('./client');
+const sg = require('../client');
 
 module.exports = async (bouncesToDelete) => {
     const requestToDeleteBounces = sg.emptyRequest({
         method: 'DELETE',
-        path: '/v3/suppression/bounces',
+        path: '/v3/suppression/spam_reports',
         body: {
             emails: bouncesToDelete
         }
     });
 
-    const {body} = await sg.API(requestToDeleteBounces);
+    const {body: deleted} = await sg.API(requestToDeleteBounces);
 
-    return body;
+    return deleted;
 };

@@ -28,6 +28,8 @@ module.exports = {
 
     },
     schedule:{
-        BounceEmail:'00 00 * * * *'
+        BounceEmail:'00 00 * * * *',
+        SpamEmail:'00 00 * * * *',
+        InvalidEmail:'00 00 * * * *'
     }
 };

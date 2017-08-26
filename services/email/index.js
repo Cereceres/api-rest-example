@@ -1,11 +1,11 @@
 const sendEmail = require('./send-email');
-const deleteBounces = require('./delete-bounces');
-const getBounces = require('./get-bounces');
-const updateEmailSettingsOfUser = require('./update-email-setting-of-user');
+const bounce = require('./bounce');
+const spam = require('./spam');
+const invalid = require('./invalid');
 
 module.exports = {
     sendEmail,
-    deleteBounces,
-    getBounces,
-    updateEmailSettingsOfUser
+    bounce,
+    spam,
+    invalid
 };

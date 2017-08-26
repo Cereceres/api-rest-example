@@ -1,4 +1,4 @@
-const crons = require('./crons');
+const scheduleTasks = require('./schedule-tasks');
 module.exports = () => {
-    crons();
+    scheduleTasks();
 };

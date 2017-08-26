@@ -1,4 +1,4 @@
-const sg = require('./client');
+const sg = require('../client');
 
 module.exports = async () => {
     const requestToGetBounces = sg.emptyRequest({
