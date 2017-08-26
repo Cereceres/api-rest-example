@@ -1,5 +1,4 @@
-const {get:getSpam, delete:deleteSpam} = require('../../services/email/bounce');
-
+const {get:getSpam, delete:deleteSpam} = require('../../services/email/spam');
 
 const { updateEmailSpam:updateEmailSettingsOfUser} = require('../../stores/user');
 

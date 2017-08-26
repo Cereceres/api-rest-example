@@ -1,6 +1,5 @@
 const {get:getInvalid, delete:deleteInvalid} = require('../../services/email/invalid');
 
-
 const { updateEmailInvalid:updateEmailSettingsOfUser} = require('../../stores/user');
 
 module.exports = async () => {
