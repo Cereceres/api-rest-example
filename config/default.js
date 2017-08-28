@@ -26,5 +26,18 @@ module.exports = {
         subjectOptEmail: 'Password Reset',
         contentOptEmail: 'Your password was resetted'
 
+    },
+    pathUnprotected: [
+        '/user/login',
+        '/user/signup',
+        '/user/facebook/token',
+        '/user/otp',
+        '/user/reset',
+        '/user/reset/password'
+    ],
+    schedule: {
+        BounceEmail: '00 00 * * * *',
+        SpamEmail: '00 00 * * * *',
+        InvalidEmail: '00 00 * * * *'
     }
 };

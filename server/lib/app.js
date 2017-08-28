@@ -10,36 +10,35 @@ const getQueries = require('./middelwares/attach-queries');
 const timeout = require('koa-timeout-v2');
 
 const app = new Koa();
-const { jwt: { secret, expiresIn }, timeout: {apiTimeout, timeoutOptions}} = require('../../config');
+const {
+    jwt: { secret, expiresIn },
+    timeout: { apiTimeout, timeoutOptions },
+    pathUnprotected
+} = require('../../config');
 app.keys = [ secret ];
-const pathProtected = [
-    '/user/login',
-    '/user/signup',
-    '/user/facebook/token',
-    '/user/otp',
-    '/user/reset',
-    '/user/reset/password'
-];
 
 app.use(errors());
 app.use(logger());
 app.use(timeout(apiTimeout, timeoutOptions));
 app.use(cookie.unless({
-    path: pathProtected
+    path: pathUnprotected
 }));
 app.use(session({
     maxAge: expiresIn,
 }, app));
 app.use(jwt.unless({
-    path: pathProtected
+    path: pathUnprotected
+}));
+app.use(getQueries.unless({
+    path: pathUnprotected
 }));
 app.use(auth.unless({
-    path: pathProtected
+    path: pathUnprotected
 }));
+
 app.use(bodyParser({
     formLimit: '5mb',
     jsonLimit: '5mb',
     textLimit: '5mb'
 }));
-app.use(getQueries());
 module.exports = app;
