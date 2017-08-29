@@ -29,6 +29,13 @@ module.exports = {
         }
     },
     media: media,
+<<<<<<< HEAD
+=======
+    pricing: {
+        type: {},
+        required: true
+    },
+>>>>>>> the subschemas are added
     fulfillmentMethod: fulfillmentMethod,
     geofence: {
         type: Array
