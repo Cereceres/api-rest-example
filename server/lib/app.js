@@ -32,9 +32,6 @@ app.use(jwt.unless({
 app.use(getQueries.unless({
     path: pathUnprotected
 }));
-app.use(getQueries.unless({
-    path: pathProtected
-}));
 app.use(auth.unless({
     path: pathUnprotected
 }));
