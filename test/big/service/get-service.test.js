@@ -1,26 +1,17 @@
 const assert = require('assert');
 
-const {  create } = require('../../../stores/service');
+const { create } = require('../../../stores/service');
 
 
 describe('User services', () => {
     describe('SUCCESS', () => {
-        it('/service GET sohuld create a service given', async() => {
+        it('/service GET sohuld create a service given', async () => {
             const body = {
                 userId: 'id of user',
                 category: {
                     category: 'category'
                 },
-                description: 'description',
-                media: {
-                    media: 'media'
-                },
-                pricing: {
-                    pricing: 'pricing'
-                },
-                fulfillmentMethod: {
-                    fulfillmentMethod: 'fulfillmentMethod'
-                },
+                description: 'description'
             };
             const serviceCreated = await create(body);
             const { body: { service: res } } = await agent.get(`/service/${serviceCreated._id}`)
@@ -30,8 +21,6 @@ describe('User services', () => {
                 .expect(200);
             assert.deepEqual(res.category, body.category);
             assert.deepEqual(res.description, body.description);
-            assert.deepEqual(res.pricing, body.pricing);
-            assert.deepEqual(res.fulfillmentMethod, body.fulfillmentMethod);
         });
     });
 

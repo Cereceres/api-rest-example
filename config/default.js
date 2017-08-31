@@ -1,6 +1,6 @@
 module.exports = {
     elasticsearch: {
-        hosts: [ 'localhost:9200' ]
+        hosts: ['localhost:9200']
     },
     timeout: {
         apiTimeout: 30000,
@@ -39,5 +39,8 @@ module.exports = {
         BounceEmail: '00 00 * * * *',
         SpamEmail: '00 00 * * * *',
         InvalidEmail: '00 00 * * * *'
+    },
+    checkr: {
+        authToken: ''
     }
 };
