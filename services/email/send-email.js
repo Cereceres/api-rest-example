@@ -21,8 +21,6 @@ const sendEmail = async(emailReceiver, subject, _content) => {
 
     const response = await sg.API(request);
 
-    if (response.error) await Promise.reject(response.error);
-
     return response;
 };
 
