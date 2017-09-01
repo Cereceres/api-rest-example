@@ -1,5 +1,6 @@
 const joi = require('joi');
 
+<<<<<<< HEAD
 module.exports = joi.object().keys({
     firstName: joi.string(),
     middleName: joi.string(),
@@ -11,4 +12,16 @@ module.exports = joi.object().keys({
     ssn:joi.string(),
     driverLicenseNumber: joi.string(),
     driverLicenseState: joi.string()
+=======
+
+const workDurationUom = ['hour', 'day', 'week'];
+
+module.exports = joi.object().keys({
+    fulfillmentMethod: joi.object(),
+    location: joi.object(),
+    media: joi.object(),
+    price: joi.object(),
+    workDuration: joi.object(),
+    workDurationUom: joi.string().valid(workDurationUom)
+>>>>>>> the check andpoint is updated
 });
