@@ -1,36 +1,34 @@
 const assert = require('assert');
 
-const { create: createOffer, findOne: findOneOffer } = require('../../../stores/checkr');
+const { create: createReport, findOne: findOneReport } = require('../../../stores/background-report');
 
 
 describe('User requests', () => {
     describe('SUCCESS', () => {
-        it('/checkr/:idOffer DELETE sohuld create a request given', async () => {
+        it('/checkr/:idReport DELETE sohuld create a request given', async () => {
             const checkr = {
                 userId: __user._id,
-                serviceId: 'id of service',
-                isActive: true,
-                category: {
-                    type: 'Object'
-                },
-                location: {
-                    type: 'Object'
-                },
-                media: {
-                    type: 'Object'
-                },
-                minPrice: 0,
-                maxPrice: 1,
-                scheduleDate: 1
+                status: 'String',
+                turnaroundTime: 1,
+                tags: 'String',
+                candidateId: 'String',
+                ssnTraceId: 'String',
+                sexOffenderSearchId: 'String',
+                nationalCriminalSearchId: 'String',
+                federalCriminalSearchId: 'String',
+                countyCriminalSearchIds: [ 'String' ],
+                motorVehicleReportId: 'String',
+                stateCriminalSearchIds: [ 'String' ],
+                documentIds: [ 'String' ]
             };
-            const offerCreated = await createOffer(checkr);
-            console.log('checkr ====: ', offerCreated);
-            await agent.delete(`/checkr/${offerCreated._id}`)
+            const reportCreated = await createReport(checkr);
+            console.log('checkr ====: ', reportCreated);
+            await agent.delete(`/checkr/${reportCreated._id}`)
                 .set(authorizationHeader)
                 .set(Cookie)
                 .expect(200);
-            const offerNotActive = findOneOffer({ _id: offerCreated._id });
-            assert(!offerNotActive.isActive);
+            const reportNotActive = findOneReport({ _id: reportCreated._id });
+            assert(!reportNotActive.isActive);
         });
     });
 
