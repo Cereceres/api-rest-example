@@ -3,7 +3,7 @@ const catchingErrorFromPromise = require('../../lib/catching-error-from-promise'
 module.exports = (client) => (query, opt = {}) => {
     const _query = client.find(query);
 
-    if (opt.limit) _query.limit(opt.limit);
+    if (opt.limit) _query.limit(opt.limit).sort({createdAt:-1});
 
     return catchingErrorFromPromise(_query.exec()
     .then((results) => results.map((_res) => {
