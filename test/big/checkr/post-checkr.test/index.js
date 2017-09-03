@@ -6,7 +6,7 @@ const { findOne: findOneOffer } = require('../../../../stores/background-candida
 
 describe('User requests', () => {
     describe('SUCCESS', () => {
-        it('/checkr POST sohuld create a request given', async() => {
+        it('/checkr POST sohuld create a request given', (done) => {
             const body = {
                 firstName: 'firstName',
                 middleName: 'middleName',
@@ -19,18 +19,21 @@ describe('User requests', () => {
                 driverLicenseNumber: 'F1112001',
                 driverLicenseState: 'CA'
             };
-            features();
-            const { body: res } = await agent
-                .post('/checkr')
+            const emitter = features();
+            console.log('antes de agregar listener');
+            emitter.on('done', () => {
+                delete body.bob;
+                findOneOffer(body)
+                    .then((candidate) => assert(candidate.isActive === true))
+                    .then(() => done());
+            });
+            console.log('antes de llamar la api');
+            agent.post('/checkr')
                 .send(body)
                 .set(authorizationHeader)
                 .set(Cookie)
-                .expect(200);
-            assert(res.success);
-            delete body.bob;
-            const candidate = await findOneOffer(body);
-            console.log('candidate ', candidate);
-            assert(candidate.isActive === true);
+                .expect(200)
+                .then(({body}) => assert(body.success));
         });
     });
 

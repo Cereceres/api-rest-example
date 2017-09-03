@@ -1,4 +1,8 @@
+const EventEmitter = require('events');
+
 const nock = require('nock');
+
+const emitter = new EventEmitter();
 
 module.exports = () => {
     nock('https://api.checkr.com:443', {encodedQueryParams:true})
@@ -49,8 +53,9 @@ module.exports = () => {
 
     nock('https://api.checkr.com:443', {encodedQueryParams:true})
     .get('/reports/57968c1e7fa87e328602ea7d', {package:'driver_pro', candidate_id:'e449545d9007db19fd437324'})
-    .reply(401,
-        {
+    .reply(401, () => {
+        emitter.emit('done');
+        return {
             id: 'REPORT_ID',
             object: 'test_report',
             uri: '/v1/reports/REPORT_ID',
@@ -74,7 +79,9 @@ module.exports = () => {
             motor_vehicle_report_id: 'MOTOR_VEHICLE_REPORT_ID',
             state_criminal_search_ids: [],
             document_ids: []
-        }
+        };
+    }
+
         , [ 'Date',
             'Sun, 03 Sep 2017 01:40:12 GMT',
             'Content-Type',
@@ -97,4 +104,6 @@ module.exports = () => {
             'cloudflare-nginx',
             'CF-RAY',
             '3984ffe71b8978b0-LAX' ]);
+
+    return emitter;
 };
