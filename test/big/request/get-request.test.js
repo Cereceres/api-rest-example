@@ -88,7 +88,7 @@ describe('User requests', () => {
             assert(res.length === limit);
             assert(next);
 
-            const { body: { requests: resSecond, nextSecond } } = await agent.get(next)
+            const { body: { requests: resSecond, next:nextSecond } } = await agent.get(next)
                 .send(body)
                 .set(authorizationHeader)
                 .set(Cookie)

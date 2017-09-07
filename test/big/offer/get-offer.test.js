@@ -57,7 +57,7 @@ describe('User offers', () => {
             assert(res.length === limit);
             assert(next);
 
-            const { body: { offers: resSecond, nextSecond } } = await agent.get(next)
+            const { body: { offers: resSecond, next:nextSecond } } = await agent.get(next)
                 .send(body)
                 .set(authorizationHeader)
                 .set(Cookie)
