@@ -20,5 +20,9 @@ module.exports = {
                 safe: true
             }
         }
+    },
+    pagination: {
+        requests: 2,
+        offers: 2
     }
 };

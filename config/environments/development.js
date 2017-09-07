@@ -25,6 +25,7 @@ module.exports = {
         }
     },
     pagination: {
-        requests: 2
+        requests: 2,
+        offers: 2
     }
 };
