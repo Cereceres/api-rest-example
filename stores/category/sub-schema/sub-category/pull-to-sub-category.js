@@ -2,12 +2,12 @@ const catchingErrorFromPromise = require('../../../../lib/catching-error-from-pr
 
 const { isArray } = Array;
 
-module.exports = (client) => (query, _medias) => {
-    console.log('query ', query)
-    const medias = isArray(_medias) ? _medias : [ _medias ];
+module.exports = (client) => (query, _subCategories) => {
+    console.log('query ', query);
+    const subCategories = isArray(_subCategories) ? _subCategories : [ _subCategories ];
     const update = {
         $pull: {
-            media: { $in: medias }
+            subCategories: { $in: subCategories }
         }
     };
     return catchingErrorFromPromise(client.update(query, update).exec());
