@@ -16,12 +16,12 @@ describe('User requests', () => {
                 userId: __user._id
             };
             const categoryCreated = await createCategory(body);
-            const {body:{subCategories}} = await agent.delete(`/category/${categoryCreated._id}/sub-category/${categoryCreated.subCategories[0]._id}`)
+            await agent.delete(`/category/${categoryCreated._id}/sub-category/${categoryCreated.subCategories[0]._id}`)
                 .set(authorizationHeader)
                 .set(Cookie)
                 .expect(200);
             const removed = await findOne({_id: categoryCreated._id});
-            asss
+            assert(!removed.subCategories.length);
         });
     });
 
