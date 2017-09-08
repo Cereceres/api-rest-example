@@ -5,7 +5,6 @@ const offerDoesNotExists = 'Error in get to request-offer';
 
 module.exports = async(ctx) => {
     const queryToFindOffer = { _id: ctx.params.idOffer };
-    console.log('queryToFindOffer ', queryToFindOffer);
     const requestOffer = await findOneOffer(queryToFindOffer);
 
     if (!requestOffer) ctx.throw(403, offerDoesNotExists);
