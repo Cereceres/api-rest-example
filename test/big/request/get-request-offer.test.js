@@ -43,14 +43,14 @@ describe('User requests', () => {
 
             });
             const { body: res } = await agent
-                .get(`/request/${offerCreated._id}/offer`)
+                .get(`/request/offer/${offerCreated._id}`)
                 .set(authorizationHeader)
                 .set(Cookie)
                 .expect(200);
             assert(typeof res.offer === 'object');
         });
 
-        it('/requests GGET all request saved with pagination', async() => {
+        it('/requests GET all request saved with pagination', async() => {
             const request = {
                 userId: __user._id,
                 category:{
@@ -86,18 +86,17 @@ describe('User requests', () => {
 
             });
 
-            const { body: { requests: res, next } } = await agent.get('/request/offers')
+            const { body: { requestOffers: res, next } } = await agent
+                .get(`/request/${requestCreated._id}/offers`)
                 .set(authorizationHeader)
-                .set(Cookie)
-                .expect(200);
+                .set(Cookie);
 
             assert(res.length === limit);
             assert(next);
 
-            const { body: { requests: resSecond, next:nextSecond } } = await agent.get(next)
+            const { body: { requestOffers: resSecond, next:nextSecond } } = await agent.get(next)
                 .set(authorizationHeader)
-                .set(Cookie)
-                .expect(200);
+                .set(Cookie);
             assert(resSecond.length === 1);
             assert(!nextSecond);
         });

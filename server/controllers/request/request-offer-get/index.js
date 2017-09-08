@@ -3,12 +3,16 @@ const {pagination:{requestOffers:limit}} = require('../../../../config');
 const {Types:{ObjectId}} = require('../../../../databases/mongo');
 const getQuery = require('./get-query');
 
-const errorInGetWatching = 'Error in get to offer-offer';
+const errorInGetWatching = 'Error in get to offer';
 module.exports = async (ctx) => {
     const query = getQuery(ctx);
+    console.log('query ', query);
     const requestOffers = await findOffer(query, {limit});
-    if (!requestOffers || requestOffers.error) ctx.throw(404, errorInGetWatching);
-
+    if (!requestOffers || requestOffers.error) {
+        console.error('error = ', !requestOffers || requestOffers.error.message);
+        ctx.throw(404, errorInGetWatching);
+    }
+    console.log('requestOffers', requestOffers);
     if (ctx.params.idOffer) {
         ctx.body = {
             offer: requestOffers[0]
