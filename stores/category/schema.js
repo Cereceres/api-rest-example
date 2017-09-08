@@ -7,10 +7,15 @@ module.exports = {
         index: true,
         ref: 'user'
     },
+    isActive:{
+        type:Boolean,
+        default:true,
+    },
     keywords: [ String ],
     name: {
         type: String,
-        required: true
+        required: true,
+        unique:true
     },
     subCategories: [ subCategories ]
 };

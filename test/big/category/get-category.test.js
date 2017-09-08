@@ -1,7 +1,7 @@
 const assert = require('assert');
 
-const { create: createCategory } = require('../../../stores/category');
-const {pagination:{categorys:limit}} = require('../../../config');
+const { create: createCategory, delete: deleteCategody } = require('../../../stores/category');
+const {pagination:{categories:limit}} = require('../../../config');
 
 describe('User categorys', () => {
     describe('SUCCESS', () => {
@@ -11,12 +11,10 @@ describe('User categorys', () => {
                     type: 'Object'
                 },
                 keywords: [ 'string' ],
-                name: {
-                    type: 'string',
-                    required: true
-                }
-
+                name: 'name get',
+                userId: __user._id
             });
+            console.log('categoryCreated ', categoryCreated);
             const { body: res } = await agent
                 .get(`/category/${categoryCreated._id}`)
                 .set(authorizationHeader)
@@ -26,29 +24,25 @@ describe('User categorys', () => {
         });
 
         it('/categorys GET all request saved with pagination', async() => {
-            const body = {
+            for (let i = 0; i <= limit; i++) await createCategory({
                 keywords: [ 'string' ],
-                name: {
-                    type: 'string',
-                    required: true
-                },
+                name: `name ${i}`,
                 userId: __user._id
-            };
-            for (let i = 0; i <= limit; i++) await createCategory(body);
+            });
 
-            const { body: { categorys: res, next } } = await agent.get('/categorys')
+            const { body: {categories:res, next} } = await agent.get('/categories')
                 .set(authorizationHeader)
                 .set(Cookie)
                 .expect(200);
+            console.log('res.length ', res);
             assert(res.length === limit);
             assert(next);
 
-            const { body: { categorys: resSecond, next:nextSecond } } = await agent.get(next)
-                .send(body)
+            const { body: { categories: resSecond, next:nextSecond } } = await agent.get(next)
                 .set(authorizationHeader)
                 .set(Cookie)
                 .expect(200);
-            assert(resSecond.length === 1);
+            assert(resSecond.length === 2);
             assert(!nextSecond);
         });
     });
@@ -56,4 +50,6 @@ describe('User categorys', () => {
     describe('FAIL', () => {
 
     });
+
+    after(() => deleteCategody({}));
 });

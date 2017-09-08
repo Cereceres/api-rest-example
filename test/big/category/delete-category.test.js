@@ -1,6 +1,6 @@
 const assert = require('assert');
 
-const { create: createCategory, findOne: findOneCategory } = require('../../../stores/category');
+const { create: createCategory, delete: deleteCategody, findOne: findOneCategory } = require('../../../stores/category');
 
 
 describe('User requests', () => {
@@ -9,10 +9,7 @@ describe('User requests', () => {
             const category = {
                 userId: __user._id,
                 keywords: [ 'string' ],
-                name: {
-                    type: 'string',
-                    required: true
-                }
+                name: 'name delete'
             };
             const categoryCreated = await createCategory(category);
             console.log('category ====: ', categoryCreated);
@@ -28,4 +25,6 @@ describe('User requests', () => {
     describe('FAIL', () => {
 
     });
+
+    after(() => deleteCategody({}));
 });

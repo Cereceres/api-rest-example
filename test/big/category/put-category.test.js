@@ -1,6 +1,6 @@
 const assert = require('assert');
 
-const { create: createCategory, findOne: findOneCategory } = require('../../../stores/category');
+const {delete: deleteCategody, create: createCategory, findOne: findOneCategory } = require('../../../stores/category');
 
 
 describe('User requests', () => {
@@ -8,18 +8,14 @@ describe('User requests', () => {
         it('/category/:idCategory PUT sohuld create a request given', async() => {
             const category = {
                 keywords: [ 'string' ],
-                name: {
-                    type: 'string',
-                    required: true
-                },
+                name: 'name put',
                 userId: __user._id
             };
             const categoryCreated = await createCategory(category);
             console.log('categoryCreated ', categoryCreated);
             const update = {
-                price: {
-                    amount: 0
-                }
+                name: 'name put 2',
+
             };
             await agent.put(`/category/${categoryCreated._id}`)
                 .send(update)
@@ -32,7 +28,7 @@ describe('User requests', () => {
         });
     });
 
-    describe('FAIL', () => {
+    describe('FAIL', () => {});
 
-    });
+    after(() => deleteCategody({}));
 });

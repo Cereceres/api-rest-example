@@ -1,22 +1,25 @@
 const { find: findCategory, count } = require('../../../../stores/category');
-const {pagination:{categorys:limit}} = require('../../../../config');
+const {pagination:{categories:limit}} = require('../../../../config');
 const {Types:{ObjectId}} = require('../../../../databases/mongo');
 const getQuery = require('./get-query');
 
 const errorInGetWatching = 'Error in get to category-category';
 module.exports = async (ctx) => {
     const query = getQuery(ctx);
-    const categorys = await findCategory(query, {limit});
-    if (!categorys || categorys.error) ctx.throw(404, errorInGetWatching);
+    console.log('query = ', query);
+    const categories = await findCategory(query, {limit});
+    if (!categories || categories.error) ctx.throw(404, errorInGetWatching);
 
     if (ctx.params.idCategory) {
         ctx.body = {
-            category: categorys[0]
+            category: categories[0]
         };
         return;
     }
-    ctx.body = {categorys};
-    const lastOne = categorys[categorys.length - 1];
+    ctx.body = {categories};
+    console.log('ctx.body para regresar = ', ctx.body);
+    const lastOne = categories[categories.length - 1];
     const remaining = await count({_id:{$gt: ObjectId(lastOne._id)}});
+    console.log()
     if (remaining) ctx.body.next = `${ctx.url}?id_gt=${lastOne._id}`;
 };

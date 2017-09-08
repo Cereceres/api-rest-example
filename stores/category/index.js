@@ -7,8 +7,8 @@ const remove = require('./remove');
 const updateIfExistsAndCreateIfNot = require('./update-if-exists-create-if-not');
 const update = require('./update');
 const search = require('./search');
-
 const Delete = require('./delete');
+
 const unset = require('./unset');
 const {methods: subCategoryMethods} = require('./sub-schema/sub-category');
 

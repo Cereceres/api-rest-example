@@ -1,6 +1,6 @@
 const assert = require('assert');
 
-const { findOne: findOneCategory } = require('../../../stores/category');
+const { findOne: findOneCategory, delete: deleteCategody } = require('../../../stores/category');
 
 
 describe('User requests', () => {
@@ -8,10 +8,7 @@ describe('User requests', () => {
         it('/category POST sohuld create a request given', async() => {
             const body = {
                 keywords: [ 'string' ],
-                name: {
-                    type: 'string',
-                    required: true
-                }
+                name: 'name post',
             };
 
             const { body: res } = await agent
@@ -27,7 +24,7 @@ describe('User requests', () => {
         });
     });
 
-    describe('FAIL', () => {
+    describe('FAIL', () => {});
 
-    });
+    after(() => deleteCategody({}));
 });
