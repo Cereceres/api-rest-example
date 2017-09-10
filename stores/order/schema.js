@@ -1,11 +1,11 @@
+const subschemas = require('./sub-schema');
+
 module.exports = {
-    userId: {
-        type: String,
-        required: true,
-        index: true,
-        ref: 'user'
-    },
     createdAt: {
+        type: Date,
+        default: new Date()
+    },
+    updatedAt: {
         type: Date,
         default: new Date()
     },
@@ -15,13 +15,11 @@ module.exports = {
         index: true,
         ref: 'user'
     },
-    buyerOrderDispute: {
-        type: Object
-    },
-    buyerServiceLocation: [ location ],
+    buyerOrderDispute: Object,
+    buyerServiceLocation: [ subschemas.location.schema ],
     cancellationDate: Date,
     category: {
-        type: {},
+        type: Object,
         required: true
     },
     description: {
@@ -32,39 +30,32 @@ module.exports = {
         type: Boolean,
         default: true
     },
-    fulfillmentMethod: fulfillmentMethod,
-    geofence: {
-        type: Array
-    },
+    ulfillmentMethod: subschemas.fulfillmentMethod.schema,
+    geofence: Array,
     orderAcceptanceDate: Date,
-    orderItems: [ orderedItem ],
-    orderMilestoneStatuses: orderMilestoneStatuses,
+    orderItems: [ subschemas.item.schema ],
+    orderMilestoneStatuses: subschemas.milestoneStatus.schema,
     paymentDate: Date,
     paymentMethod: {
         type: Object,
         required: true
     },
-    servicesPrices: [ price ],
+    servicesPrices: [ subschemas.price.schema ],
     transactionFee: Number,
     transactionDate: Date,
-    updatedAt: Date,
     sellerAcceptedScheduleTime: Boolean,
     sellerAcceptedBuyerServiceLocation: Boolean,
-    sellerDeliveredMedia: [ media ],
+    sellerDeliveredMedia: [ subschemas.media.schema ],
     sellerId: {
         type: String,
         required: true,
         index: true,
         ref: 'user'
     },
-    sellerServiceLocation: [ location ],
+    sellerServiceLocation: [ subschemas.location.schema ],
     serviceScheduleDate: Date,
     serviceStartDate: Date,
     serviceCompleteDate: Date,
-    shippingInfo: {
-        type: Object
-    },
-    taxes: {
-        type: Object
-    }
+    shippingInfo: Object,
+    taxes: Object
 };
