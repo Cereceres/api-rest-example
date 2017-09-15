@@ -5,7 +5,7 @@ const errorMessage = 'Not found';
 module.exports = async(ctx) => {
     const user = await findUser(ctx.queryToFindUserById);
     console.log('user  = ', user);
-    if (!ctx.state.user|| !user || !user.isAdmin) return ctx.throw(401);
+    if (!user || !user.isAdmin) return ctx.throw(401);
     const categoryToCreate = Object.assign({
         userId: ctx.state.user.id,
     },
