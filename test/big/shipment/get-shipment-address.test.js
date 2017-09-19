@@ -39,7 +39,7 @@ describe('User requests', () => {
 
     describe('FAIL', () => {
         it('/shipment/:idShipment GET sohuld create a request given', async() => {
-            await agent.get('/shipment/1234567890qwertyuiopasdf/address')
+            await agent.get('/shipment/1234567890qwertyuiopasdf/to-address')
                 .set(authorizationHeader)
                 .set(Cookie)
                 .expect(404);

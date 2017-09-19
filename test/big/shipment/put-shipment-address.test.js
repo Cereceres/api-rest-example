@@ -46,7 +46,7 @@ describe('User requests', () => {
             const update = {
                 street1	:'string 2',
             };
-            await agent.put('/shipment/1234567890qwertyuiopasdf/address')
+            await agent.put('/shipment/1234567890qwertyuiopasdf/to-address')
                 .send(update)
                 .set(authorizationHeader)
                 .set(Cookie)
