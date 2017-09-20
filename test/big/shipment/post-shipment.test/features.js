@@ -223,16 +223,4 @@ module.exports = () => {
           'lb4sj, 934cd196c5',
           'Strict-Transport-Security',
           'max-age=15768000; includeSubDomains; preload' ]);
-
-
-    nock('http://127.0.0.1:43527', {encodedQueryParams:true})
-      .post('/shipment', {toAddress:{street1:'417 MONTGOMERY ST', street2:'FLOOR 5', city:'SAN FRANCISCO', state:'CA', zip:'94104', country:'US', company:'EasyPost', phone:'415-123-4567'}, fromAddress:{street1:'417 MONTGOMERY ST', street2:'FLOOR 5', city:'SAN FRANCISCO', state:'CA', zip:'94104', country:'US', company:'EasyPost', phone:'415-123-4567'}, parcel:{length:20.2, width:10.9, height:5, weight:65.9}, eelPfc:'NOEEI 30.37(a)', customsCertify:true, customsSigner:'Steve Brule', contentsType:'merchandise', contentsExplanation:'', restrictionType:'none', restrictionComments:'', nonDeliveryOption:'abandon', items:[ {description:'T-shirt', quantity:1, value:10, weight:5, hsTariffNumber:'123456', originCountry:'us'} ]})
-      .reply(200, {shipment:{__v:0, userId:'59c2c65f1ecdf076f653bc9e', eelPfc:'NOEEI 30.37(a)', customsCertify:true, contentsType:'merchandise', restrictionType:'none', _id:'59c2c6755231f27917042a3b', fees:[], forms:[], rates:[], messages:[], parcel:{length:20.2, width:10.9, height:5, weight:65.9}, fromAddress:{street1:'417 MONTGOMERY ST', street2:'FLOOR 5', city:'SAN FRANCISCO', state:'CA', zip:'94104', country:'US', company:'EasyPost', phone:'415-123-4567'}, toAddress:{street1:'417 MONTGOMERY ST', street2:'FLOOR 5', city:'SAN FRANCISCO', state:'CA', zip:'94104', country:'US', company:'EasyPost', phone:'415-123-4567'}, items:[ {description:'T-shirt', quantity:1, value:'10', weight:5, hsTariffNumber:'123456', originCountry:'us'} ], updatedAt:'2017-09-20T19:50:12.836Z', isActive:true, createdAt:'2017-09-20T19:50:13.537Z'}, success:true}, [ 'Content-Type',
-          'application/json; charset=utf-8',
-          'Content-Length',
-          '879',
-          'Date',
-          'Wed, 20 Sep 2017 19:50:15 GMT',
-          'Connection',
-          'close' ]);
 };

@@ -1,13 +1,12 @@
-const { create: createShipment, update } = require('../../../stores/shipment');
-const {shipment:{save: saveShipment}} = require('../../../services/shipping');
+const { findOne, update } = require('../../../stores/shipment');
+const {buy} = require('../../../services/shipping');
 
 module.exports = async(ctx) => {
-    const shipmentToCreate = Object.assign({
-        userId: ctx.state.user.id,
-    },
-    ctx.request.body
-    );
-    const shipment = await createShipment(shipmentToCreate);
+    const query = {
+        _id: ctx.params.idShipment,
+    };
+    const shipment = await findOne(query);
+    console.log('shipment ', shipment);
     if (!shipment || shipment.error) ctx.throw(404);
     const shipmentToSend = Object.assign({}, shipment);
     if (shipmentToSend.items) {
@@ -20,7 +19,8 @@ module.exports = async(ctx) => {
     const id = shipmentToSend._id;
     delete shipmentToSend._id;
     delete shipmentToSend.userId;
-    const saved = await saveShipment(shipmentToSend);
+    console.log('shipmentToSend ', shipmentToSend);
+    const saved = await buy(shipmentToSend);
     if (!saved || saved.error) ctx.throw(404);
     await update({_id:id}, saved);
     const success = true;

@@ -10,5 +10,6 @@ module.exports = {
     getShipmentParcel: require('./shipment-parcel-get'),
     getShipment: require('./shipment-get'),
     deleteShipment: require('./shipment-delete'),
-    putShipment: require('./shipment-put')
+    putShipment: require('./shipment-put'),
+    postBuyShipment: require('./shipment-buy-post')
 };

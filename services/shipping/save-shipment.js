@@ -27,6 +27,7 @@ module.exports = async(_shipment) => {
             parcel: parcelSaved,
             customs_info: customInfoSaved
         }).save();
+        console.log('shipmentSaved ', shipmentSaved);
         shipmentSaved.externalId = shipmentSaved.id;
         delete shipmentSaved.id;
         return camelcasify(shipmentSaved);

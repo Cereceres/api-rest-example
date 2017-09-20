@@ -18,6 +18,11 @@ module.exports = {
         index: true,
         ref: 'user'
     },
+    externalId:String,
+    trackingCode: String,
+    carrier: String,
+    amount: Number,
+    reference: String,
     createdAt: {
         type: Date,
         default: new Date()
@@ -34,6 +39,7 @@ module.exports = {
     cutomsSigner: String,
     contentsType: String,
     restrictionType: String,
+    label: String,
     eelPfc: String,
     items:[ itemSchema ],
     toAddress: addressSchema,
@@ -47,9 +53,7 @@ module.exports = {
         labelDate: String,
         dateAdvance: Number
     },
-    reference: String,
     status: String,
-    trackingCode:String,
     batchId: String,
     batchDtatus: String,
     batchMessage: String,
