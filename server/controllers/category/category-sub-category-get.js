@@ -9,7 +9,7 @@ module.exports = async (ctx) => {
     const subCategories = await getCategory(query, categoryToupdate);
 
     if (!subCategories || subCategories.error) ctx
-        .throw(404, subCategories.error ? subCategories.error.message : 'Not found');
+        .throw(404,'Not found');
 
     ctx.body = { success: true, subCategories };
 };
