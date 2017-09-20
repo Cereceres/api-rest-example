@@ -41,6 +41,7 @@
     "koa-logger": "^3.0.1",
     "koa-router": "^7.2.1",
     "koa-session": "^5.4.0",
+    "koa-simple-ratelimit": "^2.3.2",
     "koa-socket.io": "^1.1.2",
     "koa-timeout-v2": "^1.0.0",
     "koa-unless": "^1.0.7",
