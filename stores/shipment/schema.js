@@ -59,7 +59,6 @@ module.exports = {
     batchMessage: String,
     insurance: String,
     orderId: String,
-    postageLabel:String,
     rates:[
         {
             service: String,
@@ -87,5 +86,18 @@ module.exports = {
     buyerAddress: addressSchema,
     forms: [],
     fees: [],
+    postageLabel: {
+        externalId: String,
+        integrated_form: String,
+        labelDate: Date,
+        labelEpl2Url: String,
+        labelFileType: String,
+        labelPdfUrl: String,
+        labelResolution: Number,
+        labelSize: String,
+        labelType: String,
+        labelUrl: String,
+        labelZplUrl: String,
+    }
 
 };

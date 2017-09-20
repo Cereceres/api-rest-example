@@ -11,5 +11,7 @@ module.exports = {
     getShipment: require('./shipment-get'),
     deleteShipment: require('./shipment-delete'),
     putShipment: require('./shipment-put'),
-    postBuyShipment: require('./shipment-buy-post')
+    postBuyShipment: require('./shipment-buy-post'),
+    getShipmentLabel:require('./shipment-label-get'),
+    getShipmentRates:require('./shipment-rates-get')
 };
