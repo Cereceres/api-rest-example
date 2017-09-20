@@ -1,4 +1,4 @@
-const { create: createShipment } = require('../../../stores/shipment');
+const { create: createShipment, update } = require('../../../stores/shipment');
 const {shipment:{save: saveShipment}} = require('../../../services/shipping');
 
 module.exports = async(ctx) => {
@@ -8,9 +8,21 @@ module.exports = async(ctx) => {
     ctx.request.body
     );
     const shipment = await createShipment(shipmentToCreate);
-    await saveShipment(shipment);
-
     if (!shipment || shipment.error) ctx.throw(404, shipment.error.message);
+    const shipmentToSend = Object.assign({}, shipment);
+    if (shipmentToSend.items) {
+        shipmentToSend.customsItems = shipmentToSend.items.map((item) => {
+            delete item._id;
+            return item;
+        });
+        delete shipmentToSend.items;
+    }
+    const id = shipmentToSend._id;
+    delete shipmentToSend._id;
+    delete shipmentToSend.userId;
+    const saved = await saveShipment(shipmentToSend);
+    if (!saved || saved.error) ctx.throw(404);
+    await update({_id:id}, saved);
     const success = true;
     ctx.body = { shipment, success };
 };

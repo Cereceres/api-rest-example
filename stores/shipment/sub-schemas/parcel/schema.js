@@ -6,5 +6,4 @@ module.exports = {
     height: Number,
     weight: Number,
     validationErrors: Schema.Types.Mixed,
-
 };
