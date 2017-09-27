@@ -2,6 +2,9 @@ module.exports = {
     elasticsearch: {
         hosts: [ 'localhost:9200' ]
     },
+    neo4j:{
+        url:'http://localhost:7474'
+    },
     timeout: {
         apiTimeout: 30000,
         timeoutOptions: {

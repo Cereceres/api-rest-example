@@ -7,6 +7,9 @@ module.exports = {
     error: {
         stackTraceLimit: 12
     },
+    neo4j:{
+        url:'http://localhost:7474'
+    },
     optExpiresIn: 24 * 3600 * 1000,
     rateLimit: 1000,
     port: 9000,

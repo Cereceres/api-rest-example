@@ -7,7 +7,9 @@ module.exports = {
     optExpiresIn: 24 * 3600 * 1000,
     rateLimit: 1000,
     port: 9000,
-
+    neo4j:{
+        url:'http://localhost:7474'
+    },
     jwt: {
         secret: 'pointters-secret-key',
         expiresIn: 3600000 * 24 * 365,
