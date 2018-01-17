@@ -15,8 +15,8 @@ module.exports = {
     urlToValidateTokenFacebook: 'https://graph.facebook.com/me/?access_token=XYZ',
     longOfPasswordTemp: 10,
     facebook: {
-        appId: '995599163788797',
-        appSecret: '4868095834fef8a3538045527b5c7da9',
+        appId: '',
+        appSecret: '',
         version: 'v2.10'
     },
     review: {
@@ -25,7 +25,7 @@ module.exports = {
     propsToBeEverPrivate: 'settings,password',
     emailSenderingCong: {
         emailRemitentInOpt: 'help@examples.com',
-        sendgridApiKey: process.env.SENDGRID_API_KEY || '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',
+        sendgridApiKey: process.env.SENDGRID_API_KEY || '',
         subjectOptEmail: 'Password Reset',
         contentOptEmail: 'Your password was resetted with: '
 
@@ -56,7 +56,7 @@ module.exports = {
         InvalidEmail: '00 00 * * * *'
     },
     checkr: {
-        authToken: 'f2416654047474c3d1257bb7c6894e0a0482c8c8'
+        authToken: ''
     },
     pagination: {
         serviceReviews:100,
@@ -67,7 +67,7 @@ module.exports = {
         categories:100
     },
     easyPost:{
-        ApiKey: 'y1ssBgKnItXIiHlu5McAEQ'
+        ApiKey: ''
     },
     redis:{
         url:'redis://127.0.0.1:6379'

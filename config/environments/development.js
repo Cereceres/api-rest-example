@@ -36,7 +36,7 @@ module.exports = {
         categories:2
     },
     easyPost:{
-        ApiKey: 'y1ssBgKnItXIiHlu5McAEQ'
+        ApiKey: ''
     },
     redis:{
         url:'redis://127.0.0.1:6379'

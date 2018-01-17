@@ -32,7 +32,7 @@ module.exports = {
         serviceReviews:100
     },
     easyPost:{
-        ApiKey: 'y1ssBgKnItXIiHlu5McAEQ'
+        ApiKey: ''
     },
     redis:{
         url:'redis://127.0.0.1:6379'
