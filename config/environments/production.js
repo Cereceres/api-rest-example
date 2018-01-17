@@ -1,6 +1,6 @@
 
 module.exports = {
-    apiName: 'Pointers-API',
+    apiName: 'example-API',
     error: {
         stackTraceLimit: 12
     },

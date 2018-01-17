@@ -1,6 +1,6 @@
 
 module.exports = {
-    apiName: 'Pointers-API-dev',
+    apiName: 'example-API-dev',
     review: {
         minLengthForComment: 0
     },
@@ -15,7 +15,7 @@ module.exports = {
     port: 9000,
 
     jwt: {
-        secret: 'pointers-secret-key',
+        secret: 'example-secret-key',
         expiresIn: 3600000 * 24 * 365,
     },
     dbpath: 'mongodb://127.0.0.1/examples-api',

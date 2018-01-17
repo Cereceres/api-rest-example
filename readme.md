@@ -1,4 +1,4 @@
-# Pointers API REST
+# example API REST
 To start the api:
 ```bash
 make start

@@ -62,7 +62,7 @@
     "url-pattern": "^1.0.3"
   },
   "scripts": {
-    "start": "DEBUG=*Pointers-API* pm2 start server/index.js --name",
+    "start": "DEBUG=*example-API* pm2 start server/index.js --name",
     "test": "nyc mocha test/bootstrap $(find test -name *.test.js )",
     "test_small": "nyc mocha --recursive test/small",
     "test_s": "nyc mocha --recursive test/small",
