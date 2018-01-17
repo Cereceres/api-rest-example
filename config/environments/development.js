@@ -18,7 +18,7 @@ module.exports = {
         secret: 'pointers-secret-key',
         expiresIn: 3600000 * 24 * 365,
     },
-    dbpath: 'mongodb://127.0.0.1/pointters-api',
+    dbpath: 'mongodb://127.0.0.1/examples-api',
 
     mongo: {
         options: {
@@ -48,5 +48,5 @@ module.exports = {
         whitelist: []
     },
     compress:{threshold:1024}
-    
+
 };

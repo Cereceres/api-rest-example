@@ -1,7 +1,7 @@
 {
-  "name": "pointtersapiv1",
+  "name": "examplesapiv1",
   "version": "1.0.0",
-  "description": "The pointters REST API",
+  "description": "The examples REST API",
   "nyc": {
     "check-coverage": true,
     "per-file": true,
@@ -68,7 +68,7 @@
     "test_s": "nyc mocha --recursive test/small",
     "mocha": "mocha test/bootstrap $(find test -name *.test.js )"
   },
-  "author": "pointters",
+  "author": "examples",
   "license": "ISC",
   "devDependencies": {
     "co-mocha": "^1.2.0",

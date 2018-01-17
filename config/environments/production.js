@@ -11,10 +11,10 @@ module.exports = {
         url:'http://localhost:7474'
     },
     jwt: {
-        secret: 'pointters-secret-key',
+        secret: 'examples-secret-key',
         expiresIn: 3600000 * 24 * 365,
     },
-    dbpath: 'mongodb://localhost/pointters-api',
+    dbpath: 'mongodb://localhost/examples-api',
 
     mongo: {
         options: {
