@@ -59,7 +59,8 @@ describe('User services', () => {
                 },
                 following: [ 'this_id_does_exist' ]
             };
-            await createUser(body_following);
+            const userCrated = await createUser(body_following);
+            console.log('userCrated ', userCrated);
             const {
                 body: { token },
                 headers: { 'set-cookie': cookie }
@@ -69,11 +70,11 @@ describe('User services', () => {
             });
             const authorizationHeader = { Authorization: `Bearer ${token}` };
             const Cookie = { Cookie: cookie };
-            authorizationHeader, Cookie;
             const { body: res } = await agent.get('/user/this_id_does_not_exists/follow')
                 .set(authorizationHeader)
                 .set(Cookie)
                 .expect(200);
+            console.log('res = ', res);
             assert.deepEqual(res, { following: false });
         });
     });

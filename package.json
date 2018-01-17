@@ -52,6 +52,7 @@
     "mongoose": "*",
     "mongoose-geojson-schema": "^2.1.2",
     "neo4j": "^2.0.0-RC2",
+    "neo4j-driver": "^1.4.1",
     "node-pre-gyp": "^0.6.36",
     "path-to-regexp": "^2.0.0",
     "redis": "^2.8.0",
